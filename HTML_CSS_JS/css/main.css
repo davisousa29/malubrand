@@ -16,7 +16,7 @@
   .ml_page_wrapper {
     width: 100%;
     height: 100%;
-    display: block;
+    display: table;
     background-color: #808080;
   }
 
@@ -116,6 +116,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 10px;
   }
   .card {
     max-width: 100%;
@@ -135,6 +136,94 @@
   .button_card {
     z-index: 1;
     position: relative;
+  }
+  .items {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+  }
+  
+  .items .item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: all 300ms ease-in-out;
+    z-index: -1;
+    opacity: 0;
+  }
+  
+  .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .item.active {
+    opacity: 1;
+    z-index: 99;
+    box-shadow: 0px 0px 105px -35px rgba(0, 0, 0, 0.75);
+  }
+  
+  .item.prev {
+    z-index: 2;
+    opacity: 0.25;
+    transform: translate(-125%, -50%);
+  }
+  
+  .item.next {
+    z-index: 2;
+    opacity: 0.25;
+    transform: translate(25%, -50%);
+  }
+  
+  .items .button-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 275px;
+    z-index: 100;
+  }
+  
+  .button-container .button {
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    position: relative;
+    opacity: 0.75;
+    transition: all 300ms ease-in-out;
+  }
+  
+  .button-container .button:hover {
+    opacity: 1;
+  }
+  
+  .button-container .button:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 1);
+    border-radius: 50%;
+    z-index: -99;
+  }
+  
+  .button-container .button:nth-child(1) {
+    float: left;
+  }
+  
+  .button-container .button:nth-child(2) {
+    float: right;
   }
 }
 
@@ -195,8 +284,7 @@
     margin-left: 30px;
   }
   .cards {
-    width: 100%;
-    height: 80%;
+    width: 70%;
     padding-top: 10px;
     display: flex;
     margin: 0 auto;
@@ -209,6 +297,21 @@
     position: absolute;
     bottom: -5%;
   }
+  .carrosel_pecas {
+    width: 100%;
+    position: relative;
+    bottom: -20vh;
+  }
+  #arrow_l {
+    margin-left: -6px;
+    margin-top: -6px;
+  }
+  #arrow_r {
+    margin-right: -6px;
+    margin-top: -6px;
+  }
+  
+
 }
 
 @media screen and (min-width: 768px) {
@@ -221,7 +324,7 @@
     position: relative;
   }
   .menu_list {
-    margin-top: 35px;
+    margin-top: 1vh;
     align-items: center;
     display: flex;
     font-size: 1.4rem;
